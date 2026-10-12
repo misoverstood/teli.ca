@@ -61,7 +61,7 @@ General
 ## Spacing
 
 - Scale (rem): 0.25, 0.5, 0.75, 1, 1.5, 2, 3, 4, 6, 8, 10
-- Section vertical padding: clamp(4rem, 10vw, 10rem), via the section-y utility
+- Section vertical padding: clamp(4rem, 8vw, 7rem), via the section-y utility. Two adjacent sections stack their padding, so keep the maximum modest.
 - Container: max width 75rem, side padding clamp(1.25rem, 5vw, 3rem), via the container-site utility
 - A heading sits closer to its own content than to the section above it.
 - Related items close together, separate groups far apart. Never equal spacing everywhere.
@@ -101,7 +101,7 @@ Focus
 
 Service rows
 - Replaces card grids. Each row: service name on the left, one-line description on the right, a right arrow after the name, 1px line between rows. The whole row is the link.
-- Two columns from 768px up, stacked below.
+- Two columns from 768px up, stacked below. Data comes from src/data/services.ts.
 
 Included lists
 - Service pages list what's included with a small accent check mark beside each item.
