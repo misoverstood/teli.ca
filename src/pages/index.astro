@@ -1,12 +1,14 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import ServiceRows from '../components/ServiceRows.astro';
+import { businessServices, personalServices } from '../data/services';
 ---
 
 <BaseLayout
   title="IT help for homes and small businesses in Toronto"
   description="Independent IT help in Toronto for small businesses, nonprofits, home offices and households: email, domains, networks, security and online clean-up."
 >
-  <section class="container-site pt-12 pb-24 md:pt-20 md:pb-40">
+  <section class="container-site pt-12 md:pt-20">
     <h1>
       <span class="block text-display">Tech, sorted.</span>
       <span class="mt-3 block text-display-sub text-hero-gray">The IT person you don&rsquo;t have.</span>
@@ -27,6 +29,24 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       >
         See services
       </a>
+    </div>
+  </section>
+
+  <section class="container-site section-y" aria-labelledby="business-heading">
+    <h2 id="business-heading" class="text-h2">For your business</h2>
+    <p class="mt-3 max-w-prose text-lead text-muted">For small businesses, nonprofits and home offices.</p>
+    <div class="mt-10">
+      <ServiceRows items={businessServices} />
+    </div>
+  </section>
+
+  <section class="on-mist bg-mist" aria-labelledby="personal-heading">
+    <div class="container-site section-y">
+      <h2 id="personal-heading" class="text-h2">For you and your home</h2>
+      <p class="mt-3 max-w-prose text-lead text-muted">For individuals and households.</p>
+      <div class="mt-10">
+        <ServiceRows items={personalServices} />
+      </div>
     </div>
   </section>
 </BaseLayout>

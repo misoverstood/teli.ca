@@ -1,0 +1,25 @@
+---
+import { serviceUrl, type Service } from '../data/services';
+
+interface Props {
+  items: Service[];
+}
+
+const { items } = Astro.props;
+---
+
+<ul class="border-t border-line">
+  {
+    items.map((s) => (
+      <li class="border-b border-line">
+        <a href={serviceUrl(s)} class="group grid gap-2 py-6 md:grid-cols-3 md:items-baseline md:gap-8 md:py-8">
+          <span class="flex items-baseline gap-3 text-h3">
+            <span class="decoration-accent decoration-2 underline-offset-4 group-hover:underline">{s.name}</span>
+            <span aria-hidden="true" class="transition-colors duration-150 ease-out group-hover:text-accent">&rarr;</span>
+          </span>
+          <span class="text-lead text-muted md:col-span-2">{s.summary}</span>
+        </a>
+      </li>
+    ))
+  }
+</ul>
