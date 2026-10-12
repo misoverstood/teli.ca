@@ -91,6 +91,7 @@ Buttons
 - Primary: ink background, paper text. Secondary: paper background, ink text, 1px ink border.
 - On black bands the two invert.
 - Minimum height 44px, weight 600, pill radius.
+- Every contact button goes to /contact with no parameters. There is one form for everyone.
 
 Links
 - Underlined in body text, underline offset 0.2em, 1px. On hover: 2px and accent colored.
@@ -109,17 +110,14 @@ Included lists
 Statement band
 - Ink background, one plain positioning paragraph in the statement size, max about 24ch per line.
 
-Two-path split
-- Two panels side by side from 768px up, stacked below: one mist, one ink.
-- Left: small business and nonprofits. Right: home, home office and personal. Each has a heading, one sentence and a link to /contact.
-
 CTA band
-- Ink background, one h2, one primary button (inverted).
+- Ink background, one h2, one primary button (inverted). The single closing ask on a page. Never stack it directly after another black block.
 
 Footer
 - Minimal: wordmark, nav links, Privacy, copyright line. small text.
 
 Forms
+- One contact form for everyone, business and personal alike.
 - Labels above inputs, 1px line border, 0.5rem radius, 48px height.
 - Errors in ink with a text message and icon, never color alone.
 
@@ -129,7 +127,7 @@ Images and icons
 
 ## Page rhythm
 
-Home: hero (paper), service rows (paper), statement (ink), personal and home services (mist), two-path split, CTA (ink), footer.
+Home: hero (paper), business service rows (paper), statement (ink), personal and home service rows (mist), CTA (ink), footer.
 
 Service pages: h1 and lead (paper), what's included, how it works, FAQ (mist), CTA (ink), footer.
 
