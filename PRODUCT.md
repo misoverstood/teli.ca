@@ -1,12 +1,12 @@
-# teli: product context
+# teli.ca: product context
 
 Read this before building or changing any page. The visual system lives in DESIGN.md.
 
 ## Brand
 
-- Name: teli, shown as a lowercase wordmark
-- Domain: teli.ca
-- Hero, two lines: "Tech, sorted." in black, then "The IT person you don't have." in gray
+- Name: teli.ca. Wordmark is "teli" in ink with ".ca" in the green accent.
+- Use teli.ca everywhere: page titles, footer, copyright line, Open Graph site name
+- Hero, two lines: "Tech, sorted." large in black, then "The IT person you don't have." smaller in gray
 - The owner's full name does not appear anywhere on the site
 - Legal or registered business name: not decided yet
 
@@ -56,7 +56,7 @@ Personal and home:
 
 ## SEO requirements
 
-- Unique title and meta description on every page
+- Unique title and meta description on every page, titles end with "| teli.ca"
 - One primary search target per service page, Toronto-qualified where it fits
 - One h1 per page, no skipped heading levels
 - sitemap.xml, robots.txt, canonical URLs, Open Graph tags
@@ -76,7 +76,6 @@ Personal and home:
 ## Open decisions
 
 - Legal or registered business name
-- Pure black, white and gray, or one accent color for links and focus states only
 - Contact form mail sender: Resend or a hosted form endpoint
 - Final service list and site map
 

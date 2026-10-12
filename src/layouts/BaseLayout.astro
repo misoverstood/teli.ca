@@ -8,7 +8,7 @@ interface Props {
 
 const { title, description } = Astro.props;
 const canonical = new URL(Astro.url.pathname, Astro.site);
-const fullTitle = `${title} | teli`;
+const fullTitle = `${title} | teli.ca`;
 const year = new Date().getFullYear();
 ---
 
@@ -23,7 +23,7 @@ const year = new Date().getFullYear();
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" href="/favicon.ico" sizes="32x32" />
     <meta property="og:type" content="website" />
-    <meta property="og:site_name" content="teli" />
+    <meta property="og:site_name" content="teli.ca" />
     <meta property="og:locale" content="en_CA" />
     <meta property="og:title" content={fullTitle} />
     <meta property="og:description" content={description} />
@@ -38,21 +38,29 @@ const year = new Date().getFullYear();
       Skip to content
     </a>
 
-    <header class="container-site flex items-center justify-between py-6">
-      <a href="/" class="text-h3 font-extrabold" aria-label="teli home">teli</a>
-      <nav aria-label="Main">
-        <ul class="flex items-center gap-4 md:gap-8">
-          <li><a href="/services" class="font-semibold hover:underline hover:underline-offset-4">Services</a></li>
-          <li><a href="/about" class="font-semibold hover:underline hover:underline-offset-4">About</a></li>
-          <li>
-            <a
-              href="/contact"
-              class="inline-flex min-h-11 items-center rounded-full bg-ink px-5 font-semibold text-paper transition-opacity duration-150 ease-out hover:opacity-85"
-            >
-              Get in touch
-            </a>
-          </li>
+    <header class="container-site flex items-center justify-between gap-4 py-6">
+      <a href="/" class="text-h3 font-extrabold" aria-label="teli.ca home">teli<span class="text-accent">.ca</span></a>
+
+      <nav aria-label="Main" class="flex items-center gap-3 md:gap-8">
+        <ul class="hidden items-center gap-8 md:flex">
+          <li><a href="/services" class="font-semibold decoration-2 underline-offset-4 hover:underline hover:decoration-accent">Services</a></li>
+          <li><a href="/about" class="font-semibold decoration-2 underline-offset-4 hover:underline hover:decoration-accent">About</a></li>
         </ul>
+
+        <details class="relative md:hidden">
+          <summary class="flex min-h-11 cursor-pointer items-center rounded-full border border-ink px-4 font-semibold">Menu</summary>
+          <ul class="absolute right-0 top-full z-40 mt-2 w-48 rounded-panel border border-line bg-paper p-2">
+            <li><a href="/services" class="block rounded-input px-3 py-2 font-semibold hover:bg-mist">Services</a></li>
+            <li><a href="/about" class="block rounded-input px-3 py-2 font-semibold hover:bg-mist">About</a></li>
+          </ul>
+        </details>
+
+        <a
+          href="/contact"
+          class="inline-flex min-h-11 items-center rounded-full bg-ink px-4 font-semibold text-paper transition-opacity duration-150 ease-out hover:opacity-85 md:px-5"
+        >
+          Get in touch
+        </a>
       </nav>
     </header>
 
@@ -62,16 +70,16 @@ const year = new Date().getFullYear();
 
     <footer class="border-t border-line">
       <div class="container-site flex flex-col gap-6 py-10 text-small text-muted md:flex-row md:items-center md:justify-between">
-        <a href="/" class="text-lead font-extrabold text-ink" aria-label="teli home">teli</a>
+        <a href="/" class="text-lead font-extrabold text-ink" aria-label="teli.ca home">teli<span class="text-accent">.ca</span></a>
         <nav aria-label="Footer">
           <ul class="flex flex-wrap gap-x-6 gap-y-2">
-            <li><a href="/services" class="hover:underline hover:underline-offset-4">Services</a></li>
-            <li><a href="/about" class="hover:underline hover:underline-offset-4">About</a></li>
-            <li><a href="/contact" class="hover:underline hover:underline-offset-4">Contact</a></li>
-            <li><a href="/privacy" class="hover:underline hover:underline-offset-4">Privacy</a></li>
+            <li><a href="/services" class="decoration-2 underline-offset-4 hover:underline hover:decoration-accent">Services</a></li>
+            <li><a href="/about" class="decoration-2 underline-offset-4 hover:underline hover:decoration-accent">About</a></li>
+            <li><a href="/contact" class="decoration-2 underline-offset-4 hover:underline hover:decoration-accent">Contact</a></li>
+            <li><a href="/privacy" class="decoration-2 underline-offset-4 hover:underline hover:decoration-accent">Privacy</a></li>
           </ul>
         </nav>
-        <p>&copy; {year} teli</p>
+        <p>&copy; {year} teli.ca</p>
       </div>
     </footer>
   </body>

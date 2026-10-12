@@ -1,4 +1,4 @@
-# teli: design system
+# teli.ca: design system
 
 Every page is built against this file. Read PRODUCT.md first for audience, voice and goals.
 
@@ -6,9 +6,9 @@ Rule: components use tokens only. A new color, font, size, radius or spacing val
 
 ## Direction
 
-Black, white and gray. Very large display type. Content-forward, plain and confident. Personality comes from type and copy, not decoration. Inspired by the layout of ilands.ai, minus its hero metrics, dot labels, numbered card grids and carousel.
+Black, white and gray with one green accent used sparingly. Very large display type. Content-forward, plain and confident. Personality comes from type and copy, not decoration. Inspired by the layout of ilands.ai, minus its hero metrics, dot labels, numbered card grids and carousel.
 
-## Color (pure monochrome, no accent)
+## Color
 
 | Token | Value | Use |
 | --- | --- | --- |
@@ -19,8 +19,15 @@ Black, white and gray. Very large display type. Content-forward, plain and confi
 | muted | #595959 | Secondary text on paper or mist (7.0:1 on paper, 6.3:1 on mist) |
 | hero-gray | #737373 | Second hero line and other large text on paper only (4.7:1) |
 | muted-on-ink | #a3a3a3 | Secondary text on black bands (7.8:1) |
+| accent | #0b7a3e | Green accent. See the accent rules below (5.4:1 on paper, 4.9:1 on mist) |
 
-- hero-gray is for large text on paper only. It drops below 4.5:1 on mist, so never use it there for body text.
+Accent rules
+- Allowed: the ".ca" in the wordmark, keyboard focus outlines on light backgrounds, link hover underlines, check marks in "what's included" lists, text selection.
+- Never: buttons, headlines, backgrounds, bands, large areas, decoration, or anywhere on black bands (only 3.6:1 on ink).
+- Green means "done, working, sorted". Use it only where that meaning fits.
+
+General
+- hero-gray is for large text on paper only. It drops below 4.5:1 on mist.
 - No gradients, glows, halos, tints or transparency effects.
 - Light theme only. Black bands provide the contrast.
 
@@ -34,6 +41,7 @@ Black, white and gray. Very large display type. Content-forward, plain and confi
 | Token | Size | Weight | Line height | Tracking |
 | --- | --- | --- | --- | --- |
 | display | clamp(3rem, 8vw + 1rem, 7.5rem) | 800 | 0.95 | -0.03em |
+| display-sub | clamp(2rem, 4.5vw + 0.5rem, 4.25rem) | 800 | 1.0 | -0.025em |
 | h1 | clamp(2.5rem, 5vw + 1rem, 5rem) | 800 | 1.0 | -0.025em |
 | statement | clamp(1.75rem, 3vw + 1rem, 3.5rem) | 700 | 1.1 | -0.02em |
 | h2 | clamp(2rem, 3vw + 1rem, 3.25rem) | 700 | 1.05 | -0.02em |
@@ -43,6 +51,7 @@ Black, white and gray. Very large display type. Content-forward, plain and confi
 | small | 0.875rem | 400 | 1.5 | 0 |
 
 - Display tracking never tighter than -0.03em. Check every hero on a 375px wide phone.
+- Headings use text-wrap: balance. Paragraphs use text-wrap: pretty.
 - Body text never below 16px. small is for footer and meta text only, never below 14px.
 - Prose max width 68ch.
 - Sentence case everywhere. No all-caps body text, no italic display type.
@@ -50,8 +59,8 @@ Black, white and gray. Very large display type. Content-forward, plain and confi
 ## Spacing
 
 - Scale (rem): 0.25, 0.5, 0.75, 1, 1.5, 2, 3, 4, 6, 8, 10
-- Section vertical padding: clamp(4rem, 10vw, 10rem)
-- Container: max width 75rem, side padding clamp(1.25rem, 5vw, 3rem)
+- Section vertical padding: clamp(4rem, 10vw, 10rem), via the section-y utility
+- Container: max width 75rem, side padding clamp(1.25rem, 5vw, 3rem), via the container-site utility
 - A heading sits closer to its own content than to the section above it.
 - Related items close together, separate groups far apart. Never equal spacing everywhere.
 
@@ -63,9 +72,18 @@ Black, white and gray. Very large display type. Content-forward, plain and confi
 
 ## Components
 
+Wordmark
+- "teli" in ink followed by ".ca" in accent, weight 800. Links home.
+- h3 size in the header, lead size in the footer.
+
 Header
-- "teli" wordmark left, nav right: Services, About, Contact, plus a black "Get in touch" button
-- Not sticky. Collapses to a simple menu below 768px.
+- Wordmark left. Right side from 768px up: Services, About, and a black "Get in touch" button.
+- Below 768px: wordmark, a "Menu" disclosure (HTML details element, no JavaScript) holding Services and About, and the "Get in touch" button.
+- Not sticky.
+
+Hero
+- One h1 with two lines: line one at display size in ink, line two at display-sub size in hero-gray.
+- Then a lead paragraph in muted, then primary and secondary buttons.
 
 Buttons
 - Primary: ink background, paper text. Secondary: paper background, ink text, 1px ink border.
@@ -73,15 +91,18 @@ Buttons
 - Minimum height 44px, weight 600, pill radius.
 
 Links
-- Underlined in body text, underline offset 0.2em, 1px; 2px on hover.
+- Underlined in body text, underline offset 0.2em, 1px. On hover: 2px and accent colored.
 - Color alone never marks a link.
 
 Focus
-- :focus-visible gets a 2px solid outline with 2px offset: ink on light, paper on black bands.
+- :focus-visible gets a 2px solid outline with 2px offset: accent on light backgrounds, paper on black bands.
 
 Service rows
 - Replaces card grids. Each row: service name on the left, one-line description on the right, a right arrow after the name, 1px line between rows. The whole row is the link.
 - Two columns from 768px up, stacked below.
+
+Included lists
+- Service pages list what's included with a small accent check mark beside each item.
 
 Statement band
 - Ink background, one plain positioning paragraph in the statement size, max about 24ch per line.
@@ -123,7 +144,7 @@ Service pages: h1 and lead (paper), what's included, how it works, FAQ (mist), C
 
 ## Never
 
-Visual: purple or blue gradients, neon or glow effects, gradient text, glassmorphism, halos and spotlights, reflexive cream or beige, colored stripe borders on cards, hairline border plus wide shadow, oversized card radii, decorative grid backgrounds, nested cards.
+Visual: purple or blue gradients, neon or glow effects, gradient text, glassmorphism, halos and spotlights, reflexive cream or beige, colored stripe borders on cards, hairline border plus wide shadow, oversized card radii, decorative grid backgrounds, nested cards, accent color on large areas.
 
 Layout and type: identical icon-card grids, icon tiles above headings, pill badges or small labels above headlines, numbered labels with no real sequence, big-number hero metrics, carousels, flat heading hierarchy, Inter or Geist.
 
