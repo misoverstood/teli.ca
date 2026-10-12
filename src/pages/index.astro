@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ServiceRows from '../components/ServiceRows.astro';
+import CtaBand from '../components/CtaBand.astro';
 import { businessServices, personalServices } from '../data/services';
 ---
 
@@ -58,15 +59,5 @@ import { businessServices, personalServices } from '../data/services';
     </div>
   </section>
 
-  <section class="bg-ink text-paper" aria-labelledby="cta-heading">
-    <div class="container-site section-y flex flex-col items-start gap-8 md:flex-row md:items-center md:justify-between">
-      <h2 id="cta-heading" class="text-h2">Got something that needs sorting?</h2>
-      <a
-        href="/contact"
-        class="inline-flex min-h-11 shrink-0 items-center rounded-full bg-paper px-6 font-semibold text-ink transition-opacity duration-150 ease-out hover:opacity-85"
-      >
-        Get in touch
-      </a>
-    </div>
-  </section>
+  <CtaBand />
 </BaseLayout>
