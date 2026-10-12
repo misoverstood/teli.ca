@@ -15,7 +15,7 @@
   --color-muted: #595959;
   --color-hero-gray: #737373;
   --color-muted-on-ink: #a3a3a3;
-  --color-accent: #0b7a3e;
+  --color-accent: #16a34a;
 
   --text-display: clamp(3rem, 8vw + 1rem, 7.5rem);
   --text-display--line-height: 0.95;
@@ -102,7 +102,7 @@
 
   ::selection {
     background-color: var(--color-accent);
-    color: var(--color-paper);
+    color: var(--color-ink);
   }
 
   a:not([class]) {
@@ -129,8 +129,8 @@
     outline-offset: 2px;
   }
 
-  .on-ink :focus-visible {
-    outline-color: var(--color-paper);
+  .on-mist :focus-visible {
+    outline-color: var(--color-ink);
   }
 
   @media (prefers-reduced-motion: reduce) {

@@ -19,11 +19,13 @@ Black, white and gray with one green accent used sparingly. Very large display t
 | muted | #595959 | Secondary text on paper or mist (7.0:1 on paper, 6.3:1 on mist) |
 | hero-gray | #737373 | Second hero line and other large text on paper only (4.7:1) |
 | muted-on-ink | #a3a3a3 | Secondary text on black bands (7.8:1) |
-| accent | #0b7a3e | Green accent. See the accent rules below (5.4:1 on paper, 4.9:1 on mist) |
+| accent | #16a34a | Bright green accent. See the accent rules below (3.3:1 on paper, 3.0:1 on mist, 6.0:1 on ink) |
 
 Accent rules
-- Allowed: the ".ca" in the wordmark, keyboard focus outlines on light backgrounds, link hover underlines, check marks in "what's included" lists, text selection.
-- Never: buttons, headlines, backgrounds, bands, large areas, decoration, or anywhere on black bands (only 3.6:1 on ink).
+- Allowed on paper: the ".ca" in the wordmark, keyboard focus outlines, link hover underlines, check marks in "what's included" lists, text selection background (with ink text).
+- Allowed on black bands: the same, plus the ".ca" in the footer wordmark and small marks. It reads well on ink.
+- Never: body or small text in accent on paper or mist (below 4.5:1), buttons, headlines, backgrounds, large areas, decoration.
+- On mist panels, focus outlines use ink instead of accent.
 - Green means "done, working, sorted". Use it only where that meaning fits.
 
 General
@@ -73,7 +75,7 @@ General
 ## Components
 
 Wordmark
-- "teli" in ink followed by ".ca" in accent, weight 800. Links home.
+- "teli" in ink (paper on black bands) followed by ".ca" in accent, weight 800. Links home.
 - h3 size in the header, lead size in the footer.
 
 Header
@@ -95,7 +97,7 @@ Links
 - Color alone never marks a link.
 
 Focus
-- :focus-visible gets a 2px solid outline with 2px offset: accent on light backgrounds, paper on black bands.
+- :focus-visible gets a 2px solid outline with 2px offset: accent on paper and on black bands, ink inside mist panels (on-mist class).
 
 Service rows
 - Replaces card grids. Each row: service name on the left, one-line description on the right, a right arrow after the name, 1px line between rows. The whole row is the link.
@@ -152,7 +154,7 @@ Motion: pulsing dots, blinking cursors, marquees, bounce or elastic easing, hove
 
 ## Quality floor (check before any page ships)
 
-- WCAG AA contrast: 4.5:1 body, 3:1 large text
+- WCAG AA contrast: 4.5:1 body, 3:1 large text and UI marks
 - One h1 per page, no skipped heading levels
 - Body 16px or larger, line height about 1.5 to 1.6, 65 to 75 characters per line
 - No justified text, no gray text on dark gray, no placeholder images
