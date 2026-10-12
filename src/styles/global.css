@@ -1,1 +1,103 @@
 @import "tailwindcss";
+@import "@fontsource-variable/schibsted-grotesk";
+
+/* Design tokens. Source of truth is DESIGN.md. Change values here and there together. */
+@theme {
+  --color-*: initial;
+  --text-*: initial;
+
+  --font-sans: "Schibsted Grotesk Variable", system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+
+  --color-ink: #0a0a0a;
+  --color-paper: #ffffff;
+  --color-mist: #f3f3f3;
+  --color-line: #e2e2e2;
+  --color-muted: #595959;
+  --color-hero-gray: #737373;
+  --color-muted-on-ink: #a3a3a3;
+
+  --text-display: clamp(3rem, 8vw + 1rem, 7.5rem);
+  --text-display--line-height: 0.95;
+  --text-display--letter-spacing: -0.03em;
+  --text-display--font-weight: 800;
+
+  --text-h1: clamp(2.5rem, 5vw + 1rem, 5rem);
+  --text-h1--line-height: 1;
+  --text-h1--letter-spacing: -0.025em;
+  --text-h1--font-weight: 800;
+
+  --text-statement: clamp(1.75rem, 3vw + 1rem, 3.5rem);
+  --text-statement--line-height: 1.1;
+  --text-statement--letter-spacing: -0.02em;
+  --text-statement--font-weight: 700;
+
+  --text-h2: clamp(2rem, 3vw + 1rem, 3.25rem);
+  --text-h2--line-height: 1.05;
+  --text-h2--letter-spacing: -0.02em;
+  --text-h2--font-weight: 700;
+
+  --text-h3: 1.5rem;
+  --text-h3--line-height: 1.2;
+  --text-h3--letter-spacing: -0.01em;
+  --text-h3--font-weight: 700;
+
+  --text-lead: 1.25rem;
+  --text-lead--line-height: 1.5;
+
+  --text-body: 1.0625rem;
+  --text-body--line-height: 1.6;
+
+  --text-small: 0.875rem;
+  --text-small--line-height: 1.5;
+
+  --radius-input: 0.5rem;
+  --radius-panel: 0.75rem;
+
+  --container-site: 75rem;
+  --container-prose: 68ch;
+}
+
+@layer base {
+  html {
+    color-scheme: light;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: var(--color-paper);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    font-size: var(--text-body);
+    line-height: 1.6;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a:not([class]) {
+    text-decoration-line: underline;
+    text-underline-offset: 0.2em;
+    text-decoration-thickness: 1px;
+  }
+
+  a:not([class]):hover {
+    text-decoration-thickness: 2px;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-ink);
+    outline-offset: 2px;
+  }
+
+  .on-ink :focus-visible {
+    outline-color: var(--color-paper);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      transition-duration: 0.01ms !important;
+      animation: none !important;
+    }
+  }
+}
