@@ -1,0 +1,38 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ServiceRows from '../../components/ServiceRows.astro';
+import CtaBand from '../../components/CtaBand.astro';
+import { businessServices, personalServices } from '../../data/services';
+---
+
+<BaseLayout
+  title="IT services in Toronto for small businesses and homes"
+  description="Email, domains, security, migrations, websites, automation and office setup for small businesses, plus home networks, personal security and online clean-up in Toronto."
+>
+  <section class="container-site pt-12 md:pt-20">
+    <h1 class="text-h1">Services</h1>
+    <p class="mt-6 max-w-prose text-lead text-muted">
+      Practical IT help for small teams and households. Not sure which of these fits? Get in touch and describe what&rsquo;s going on.
+    </p>
+  </section>
+
+  <section class="container-site section-y" aria-labelledby="business-heading">
+    <h2 id="business-heading" class="text-h2">For your business</h2>
+    <p class="mt-3 max-w-prose text-lead text-muted">Small teams, nonprofits and anyone working from home.</p>
+    <div class="mt-10">
+      <ServiceRows items={businessServices} />
+    </div>
+  </section>
+
+  <section class="on-mist bg-mist" aria-labelledby="personal-heading">
+    <div class="container-site section-y">
+      <h2 id="personal-heading" class="text-h2">For you and your home</h2>
+      <p class="mt-3 max-w-prose text-lead text-muted">Your own devices, accounts and Wi-Fi.</p>
+      <div class="mt-10">
+        <ServiceRows items={personalServices} />
+      </div>
+    </div>
+  </section>
+
+  <CtaBand />
+</BaseLayout>
