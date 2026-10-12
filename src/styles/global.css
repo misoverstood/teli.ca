@@ -57,6 +57,17 @@
   --container-prose: 68ch;
 }
 
+/* Shared layout utilities. Values come from DESIGN.md. */
+@utility container-site {
+  margin-inline: auto;
+  max-width: var(--container-site);
+  padding-inline: clamp(1.25rem, 5vw, 3rem);
+}
+
+@utility section-y {
+  padding-block: clamp(4rem, 10vw, 10rem);
+}
+
 @layer base {
   html {
     color-scheme: light;

@@ -1,0 +1,78 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description: string;
+}
+
+const { title, description } = Astro.props;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+const fullTitle = `${title} | teli`;
+const year = new Date().getFullYear();
+---
+
+<!doctype html>
+<html lang="en-CA">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" sizes="32x32" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="teli" />
+    <meta property="og:locale" content="en_CA" />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta name="twitter:card" content="summary" />
+  </head>
+  <body>
+    <a
+      href="#main"
+      class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:bg-ink focus:px-4 focus:py-2 focus:text-paper"
+    >
+      Skip to content
+    </a>
+
+    <header class="container-site flex items-center justify-between py-6">
+      <a href="/" class="text-h3 font-extrabold" aria-label="teli home">teli</a>
+      <nav aria-label="Main">
+        <ul class="flex items-center gap-4 md:gap-8">
+          <li><a href="/services" class="font-semibold hover:underline hover:underline-offset-4">Services</a></li>
+          <li><a href="/about" class="font-semibold hover:underline hover:underline-offset-4">About</a></li>
+          <li>
+            <a
+              href="/contact"
+              class="inline-flex min-h-11 items-center rounded-full bg-ink px-5 font-semibold text-paper transition-opacity duration-150 ease-out hover:opacity-85"
+            >
+              Get in touch
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <main id="main">
+      <slot />
+    </main>
+
+    <footer class="border-t border-line">
+      <div class="container-site flex flex-col gap-6 py-10 text-small text-muted md:flex-row md:items-center md:justify-between">
+        <a href="/" class="text-lead font-extrabold text-ink" aria-label="teli home">teli</a>
+        <nav aria-label="Footer">
+          <ul class="flex flex-wrap gap-x-6 gap-y-2">
+            <li><a href="/services" class="hover:underline hover:underline-offset-4">Services</a></li>
+            <li><a href="/about" class="hover:underline hover:underline-offset-4">About</a></li>
+            <li><a href="/contact" class="hover:underline hover:underline-offset-4">Contact</a></li>
+            <li><a href="/privacy" class="hover:underline hover:underline-offset-4">Privacy</a></li>
+          </ul>
+        </nav>
+        <p>&copy; {year} teli</p>
+      </div>
+    </footer>
+  </body>
+</html>
