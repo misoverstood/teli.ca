@@ -4,6 +4,8 @@ import { site } from '../../data/site';
 
 const field =
   'mt-2 block w-full rounded-input border border-line bg-paper px-4 text-body text-ink transition-colors duration-150 ease-out hover:border-muted focus:border-ink';
+
+const turnstileKey = import.meta.env.DEV ? site.turnstileTestSiteKey : site.turnstileSiteKey;
 ---
 
 <BaseLayout
@@ -42,6 +44,8 @@ const field =
           <input id="website" name="website" type="text" tabindex="-1" autocomplete="off" />
         </div>
 
+        <div class="cf-turnstile mt-6" data-sitekey={turnstileKey} data-theme="light" data-size="flexible"></div>
+
         <p class="mt-6 text-small text-muted">
           Your details are only used to reply to you. Read the <a href="/privacy">privacy policy</a>.
         </p>
@@ -70,4 +74,6 @@ const field =
       </aside>
     </div>
   </section>
+
+  <script is:inline src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 </BaseLayout>

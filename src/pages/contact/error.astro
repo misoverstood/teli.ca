@@ -1,0 +1,18 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Message not sent" description="Something went wrong sending your message." noindex>
+  <section class="container-site pt-12 pb-24 md:pt-20 md:pb-32">
+    <h1 class="text-h1">Your message didn&rsquo;t go through.</h1>
+    <p class="mt-6 max-w-prose text-lead text-muted">
+      Use your browser&rsquo;s back button to return to the form with what you typed, check that every field is filled in and the security check has finished, then try again.
+    </p>
+    <a
+      href="/contact"
+      class="mt-10 inline-flex min-h-11 items-center rounded-full border border-ink px-6 font-semibold text-ink transition-colors duration-150 ease-out hover:bg-mist"
+    >
+      Back to the form
+    </a>
+  </section>
+</BaseLayout>
