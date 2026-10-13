@@ -1,0 +1,98 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const updated = "October 12, 2026";
+---
+
+<BaseLayout
+  title="Privacy policy"
+  description="How teli.ca handles the information you send through the contact form: what's collected, who processes it, how long it's kept and your rights."
+>
+  <section class="container-site pt-12 md:pt-20">
+    <h1 class="text-h1">Privacy policy</h1>
+    <p class="mt-6 max-w-prose text-lead text-muted">
+      The short version: this site collects only what you type into the contact form, uses it only to reply to you, and never sells or shares it for marketing.
+    </p>
+    <p class="mt-4 text-small text-muted">Last updated {updated}</p>
+  </section>
+
+  <section class="container-site section-y">
+    <div class="max-w-prose space-y-12">
+      <div>
+        <h2 class="text-h3">Who this policy covers</h2>
+        <p class="mt-3">
+          teli.ca is an independent IT consulting practice based in Toronto, Ontario. In this policy, &ldquo;I&rdquo; and &ldquo;me&rdquo; mean teli.ca. This policy covers this website and the contact form on it.
+        </p>
+      </div>
+
+      <div>
+        <h2 class="text-h3">What I collect</h2>
+        <p class="mt-3">When you use the contact form, I receive:</p>
+        <ul class="mt-3 list-disc space-y-2 pl-6">
+          <li>your name</li>
+          <li>your email address</li>
+          <li>your message</li>
+        </ul>
+        <p class="mt-3">
+          The form asks for nothing else. Please don&rsquo;t include passwords, account numbers or other sensitive details in your message.
+        </p>
+        <p class="mt-3">
+          To keep spam out, the contact page uses Cloudflare Turnstile, which looks at technical signals such as your IP address and browser to tell people from automated bots. Like most websites, the hosting service also keeps standard technical logs, such as IP addresses, for security.
+        </p>
+        <p class="mt-3">
+          This site doesn&rsquo;t set cookies, doesn&rsquo;t use advertising trackers, and doesn&rsquo;t currently use analytics.
+        </p>
+      </div>
+
+      <div>
+        <h2 class="text-h3">How I use it</h2>
+        <p class="mt-3">
+          Only to read your message, reply to you, and do any work you ask me to do. I don&rsquo;t add you to mailing lists, send marketing, or sell or rent your information to anyone.
+        </p>
+      </div>
+
+      <div>
+        <h2 class="text-h3">Who else handles it</h2>
+        <p class="mt-3">A few services are involved in getting your message from this site to my inbox:</p>
+        <ul class="mt-3 list-disc space-y-2 pl-6">
+          <li><strong>Cloudflare</strong> runs the spam check and the small program that receives the form. That program passes your message along and doesn&rsquo;t store it.</li>
+          <li><strong>Resend</strong> delivers the message to my inbox by email. It keeps delivery logs, which can include the message, for a limited period.</li>
+          <li><strong>Microsoft</strong> provides the mailbox where your message is received.</li>
+          <li><strong>GitHub</strong> hosts this website.</li>
+        </ul>
+        <p class="mt-3">
+          Some of these services store or process information in the United States, so it may be subject to the laws of that country.
+        </p>
+      </div>
+
+      <div>
+        <h2 class="text-h3">How long I keep it</h2>
+        <p class="mt-3">
+          If your enquiry leads to work, I keep our correspondence for as long as it&rsquo;s needed to do that work and keep proper business records. If it doesn&rsquo;t, I delete it within 12 months. You can ask me to delete it sooner at any time.
+        </p>
+      </div>
+
+      <div>
+        <h2 class="text-h3">Your rights</h2>
+        <p class="mt-3">
+          You can ask what information I hold about you, ask me to correct it, or ask me to delete it. Use the <a href="/contact">contact form</a> and I&rsquo;ll respond. If you&rsquo;re not satisfied with how I&rsquo;ve handled your information, you can contact the
+          <a href="https://www.priv.gc.ca/" rel="noopener">Office of the Privacy Commissioner of Canada</a>.
+        </p>
+      </div>
+
+      <div>
+        <h2 class="text-h3">Client work</h2>
+        <p class="mt-3">
+          If you become a client, any access to your systems or information during the work is agreed with you directly. I&rsquo;ll never ask you to send a password by email or text.
+        </p>
+      </div>
+
+      <div>
+        <h2 class="text-h3">Changes to this policy</h2>
+        <p class="mt-3">
+          If anything here changes, I&rsquo;ll update this page and the date at the top.
+        </p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
