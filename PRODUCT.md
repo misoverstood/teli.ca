@@ -25,59 +25,52 @@ Copy speaks to "you" and never assumes the reader has an office.
 
 ## The one goal
 
-Every page leads to the contact form. No pricing is published. No phone number and no street address on the site.
+Every page leads to the single contact form at /contact. No pricing is published. No phone number, no street address and no email address on the site.
 
 ## Services
 
-Each service has its own page aimed at one primary search. Consultations are not a separate page: they are how people start, and are offered on /about and /contact.
+Each service has its own page aimed at one primary search. Consultations are not a separate page: they are how people start, and are offered on /about and /contact. Service content lives in src/data/services.ts.
 
 Business
 
-| Page | URL | Covers | Primary search target |
-| --- | --- | --- | --- |
-| Email and workspace | /services/email-and-workspace | Microsoft 365 or Google Workspace setup, licensing, shared mailboxes, clean-up | Microsoft 365 setup Toronto |
-| Domains and DNS | /services/domains-and-dns | Registration, transfers, DNS clean-up, SPF, DKIM and DMARC so email lands | DMARC setup small business |
-| Security and devices | /services/security-and-devices | MFA, managed laptops and phones, staff onboarding and offboarding, password manager rollout. Covers Azure and Entra identity work. | small business cybersecurity Toronto |
-| Migrations | /services/migrations | Moving email, files, domains, tenants and websites between platforms | email migration Toronto |
-| Websites and hosting | /services/websites-and-hosting | Simple site builds, hosting moves, SSL, getting control of your domain back | website hosting help small business |
-| Automation and AI | /services/automation-and-ai | Connecting apps and automating repetitive work, setting up Copilot and other AI tools safely | small business automation |
-| Office setup | /services/office-setup | Network, Wi-Fi, backups, printers, buying the right hardware for a small or home office | small office IT setup Toronto |
+| Page | URL | Primary search target |
+| --- | --- | --- |
+| Email and workspace | /services/email-and-workspace | Microsoft 365 setup Toronto |
+| Domains and DNS | /services/domains-and-dns | DMARC setup small business |
+| Security and devices | /services/security-and-devices | small business cybersecurity Toronto |
+| Migrations | /services/migrations | email migration Toronto |
+| Websites and hosting | /services/websites-and-hosting | website hosting help small business |
+| Automation and AI | /services/automation-and-ai | small business automation |
+| Office setup | /services/office-setup | small office IT setup Toronto |
 
 Personal and home
 
-| Page | URL | Covers | Primary search target |
-| --- | --- | --- | --- |
-| Home network | /services/home-network | Wi-Fi that reaches every room, router hardening, parental controls | home Wi-Fi setup Toronto |
-| Personal security | /services/personal-security | Passwords, 2FA, device hardening, help after a hack or scam | personal cybersecurity help |
-| Online clean-up | /services/online-cleanup | Data broker removal, old accounts, privacy settings, search results | remove personal information online Canada |
+| Page | URL | Primary search target |
+| --- | --- | --- |
+| Home network | /services/home-network | home Wi-Fi setup Toronto |
+| Personal security | /services/personal-security | personal cybersecurity help |
+| Online clean-up | /services/online-cleanup | remove personal information online Canada |
 
 Parked for later: an "Ongoing IT support" page for a monthly arrangement. Not offered on the site for now.
 
 ## Site map
 
 - / (home)
-- /services (index of all services, business and personal groups)
-- /services/email-and-workspace
-- /services/domains-and-dns
-- /services/security-and-devices
-- /services/migrations
-- /services/websites-and-hosting
-- /services/automation-and-ai
-- /services/office-setup
-- /services/home-network
-- /services/personal-security
-- /services/online-cleanup
+- /services (index of all services)
+- /services/[slug] (ten service pages, one template)
 - /about (how engagements work, including consultations)
-- /contact (form)
+- /contact (form) and /contact/thanks (confirmation, not indexed)
 - /privacy (privacy policy)
 
 ## Voice and copy rules
 
 - Plain, direct and warm. Say what the reader can do and what improves for them.
+- Canadian spelling.
 - No em dashes.
 - No hype words: supercharge, world-class, enterprise-grade, seamless, cutting-edge.
 - No "Not X. Y." slogans, no calling things "theater".
 - Sentence case. One label per block, never repeated.
+- No commitments on pricing, response times or availability.
 
 ## SEO requirements
 
@@ -88,22 +81,39 @@ Parked for later: an "Ongoing IT support" page for a monthly arrangement. Not of
 - Structured data for a local professional service with a service area and no street address
 - Short FAQ section on each service page
 - Google Business Profile and Bing Places as a service-area business, address hidden
-- Measurement: Google Search Console, Bing Webmaster Tools, Cloudflare Web Analytics
+- Measurement: Google Search Console, Bing Webmaster Tools, Cloudflare Web Analytics (script-based, works on any host)
+
+## Contact form
+
+- One form for everyone: name, email, message. Nothing else.
+- Spam protection: a hidden honeypot field, plus Cloudflare Turnstile
+- The form posts to a small Cloudflare Worker on a workers.dev address. The Worker checks Turnstile and the honeypot, then sends the message through Resend.
+- Resend sends from a subdomain of teli.ca, with the visitor's address as Reply-To.
+- The destination mailbox and the Resend API key are Worker secrets. Never commit them.
+- The sending address must be added to Safe senders in the destination mailbox so submissions never land in Junk.
+
+## DNS and email rules
+
+- DNS for teli.ca must stay at GoDaddy. The domain's email depends on it, and moving nameservers would break it.
+- Never change or remove these records: MX, the SPF TXT record on the root, the _outlook TXT record, the autodiscover CNAME, the _domainconnect CNAME.
+- Resend's records go on a subdomain only. Do not edit the root SPF record for Resend.
+- DMARC starts at p=none (monitor only). Tighten only after reports confirm all legitimate mail aligns.
+- The four A records on the root point to GitHub Pages. www should be a CNAME to misoverstood.github.io.
 
 ## Privacy and security
 
-- Contact form asks only for name, email, what they need help with, and a short message. Never passwords, account details or ID.
-- Spam protection on the form with Cloudflare Turnstile
+- The form never asks for passwords, account details or ID, and says so.
 - No third-party trackers, no cookies, no consent banner needed
-- A privacy policy page is required before launch
-- This repo is public: never commit secrets, keys or client information
+- A privacy policy page is required before launch, naming Resend, Cloudflare (Worker and Turnstile) and GitHub Pages as processors
+- This repo is public: never commit secrets, private email addresses or client information
 
 ## Open decisions
 
 - Legal or registered business name
-- Contact form mail sender: Resend or a hosted form endpoint
 - Whether to add the "Ongoing IT support" page later
 
 ## Stack
 
-Astro 7 and Tailwind 4 on the main branch, deploying to Cloudflare Workers. The gh-pages branch serves the old site until cutover.
+- Astro 7 and Tailwind 4 on the main branch
+- Hosting: GitHub Pages, built by GitHub Actions. The gh-pages branch serves the old site until cutover.
+- Contact form: Cloudflare Worker on workers.dev, sending through Resend
