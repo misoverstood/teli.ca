@@ -1,0 +1,14 @@
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "teli-contact-form",
+  "main": "src/index.js",
+  "compatibility_date": "2026-09-01",
+  "workers_dev": true,
+  "observability": { "enabled": true },
+  "vars": {
+    "ALLOWED_ORIGINS": "https://teli.ca,https://www.teli.ca,http://localhost:4321",
+    "FROM_ADDRESS": "teli.ca contact form <form@notify.teli.ca>"
+  }
+  // Secrets, set with "npx wrangler secret put NAME", never stored in this file:
+  // TURNSTILE_SECRET, RESEND_API_KEY, CONTACT_TO
+}
