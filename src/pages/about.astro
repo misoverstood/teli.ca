@@ -1,0 +1,98 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CtaBand from '../components/CtaBand.astro';
+import HowItWorks from '../components/HowItWorks.astro';
+
+const tools = [
+  'Microsoft 365 (formerly Office 365)',
+  'Microsoft Entra ID, Intune and Defender',
+  'Google Workspace',
+  'Salesforce',
+  'Zapier and Power Automate',
+  'Microsoft Copilot, ChatGPT and other AI tools',
+  'Domains, DNS and email deliverability',
+  'Windows, macOS, iPhone and Android',
+];
+
+const expect = [
+  'Plain language, without the jargon',
+  'Written notes on everything that changed',
+  'You keep control of your own accounts and passwords',
+  'Honest advice, including when you don\u2019t need to spend money',
+];
+---
+
+<BaseLayout
+  title="About"
+  description="teli.ca is a one-person IT practice in Toronto with over 25 years of experience, helping small businesses, nonprofits, home offices and households."
+>
+  <section class="container-site pt-12 md:pt-20">
+    <h1 class="text-h1">About</h1>
+    <p class="mt-6 max-w-prose text-lead text-muted">
+      teli.ca is a one-person IT practice in Toronto for small businesses, nonprofits, home offices and households. You deal with the same experienced person from your first message to the final notes. No ticket queue, no account manager, no upselling.
+    </p>
+  </section>
+
+  <section class="container-site section-y" aria-labelledby="background-heading">
+    <div class="grid gap-12 lg:grid-cols-3">
+      <div class="lg:col-span-2">
+        <h2 id="background-heading" class="text-h2">Background</h2>
+        <p class="mt-6 max-w-prose">
+          I&rsquo;ve been solving technology problems for over 25 years, for businesses, nonprofits and families.
+        </p>
+        <p class="mt-4 max-w-prose">
+          By day I work in a senior IT operations role at an international organization, looking after Microsoft 365, Google Workspace, identity and security, and the business systems people depend on. teli.ca brings that same experience to teams and households that don&rsquo;t have an IT department of their own, including automating the repetitive admin work that eats into their week.
+        </p>
+      </div>
+      <div>
+        <h3 class="text-h3">What I work with</h3>
+        <ul class="mt-4 border-t border-line">
+          {tools.map((t) => <li class="border-b border-line py-3 text-muted">{t}</li>)}
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="on-mist bg-mist" aria-labelledby="expect-heading">
+    <div class="container-site section-y">
+      <h2 id="expect-heading" class="text-h2">What you can expect</h2>
+      <ul class="mt-8 grid gap-x-8 gap-y-4 md:grid-cols-2">
+        {
+          expect.map((item) => (
+            <li class="flex gap-3">
+              <svg viewBox="0 0 24 24" class="mt-1 size-5 shrink-0 text-accent" aria-hidden="true">
+                <path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+              <span>{item}</span>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <section class="container-site section-y" aria-labelledby="how-heading">
+    <h2 id="how-heading" class="text-h2">How it works</h2>
+    <p class="mt-6 max-w-prose">
+      Every job starts with a conversation. Not sure what you need? Start with a consultation: describe what&rsquo;s going on, and we&rsquo;ll work out together what&rsquo;s worth doing and what isn&rsquo;t.
+    </p>
+    <HowItWorks />
+
+    <div class="mt-20 grid gap-12 md:mt-28 md:grid-cols-2">
+      <div>
+        <h2 class="text-h3">Remote or on-site</h2>
+        <p class="mt-3 max-w-prose text-muted">
+          A lot of the work can be done remotely. When it&rsquo;s better in person, like setting up a network or an office, I come to you in Toronto.
+        </p>
+      </div>
+      <div>
+        <h2 class="text-h3">Evenings and weekends</h2>
+        <p class="mt-3 max-w-prose text-muted">
+          Work is scheduled around a full-time role, often in the evenings and on weekends. For many home and small office clients, that&rsquo;s when it&rsquo;s most convenient anyway.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <CtaBand />
+</BaseLayout>

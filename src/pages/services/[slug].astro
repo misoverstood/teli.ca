@@ -1,7 +1,8 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import CtaBand from '../../components/CtaBand.astro';
-import { services, howItWorks, type Service } from '../../data/services';
+import HowItWorks from '../../components/HowItWorks.astro';
+import { services, type Service } from '../../data/services';
 import { serviceSchemas } from '../../data/schema';
 
 export function getStaticPaths() {
@@ -44,17 +45,7 @@ const { service } = Astro.props;
 
     <div class="mt-20 md:mt-28" aria-labelledby="how-heading">
       <h2 id="how-heading" class="text-h2">How it works</h2>
-      <ol class="mt-8 grid gap-8 md:grid-cols-2 lg:grid-cols-4">
-        {
-          howItWorks.map((step, i) => (
-            <li class="border-t border-line pt-6">
-              <p class="text-lead font-extrabold text-hero-gray">{i + 1}</p>
-              <h3 class="mt-2 text-h3">{step.title}</h3>
-              <p class="mt-2 text-muted">{step.body}</p>
-            </li>
-          ))
-        }
-      </ol>
+      <HowItWorks />
     </div>
   </section>
 
