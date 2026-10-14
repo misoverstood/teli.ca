@@ -3,11 +3,13 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import ServiceRows from '../components/ServiceRows.astro';
 import CtaBand from '../components/CtaBand.astro';
 import { businessServices, personalServices } from '../data/services';
+import { businessSchema } from '../data/schema';
 ---
 
 <BaseLayout
   title="IT help for homes and small businesses in Toronto"
   description="Independent IT help in Toronto for small businesses, nonprofits, home offices and households: email, domains, networks, security and online clean-up."
+  jsonLd={businessSchema()}
 >
   <section class="container-site pt-12 md:pt-20">
     <h1>

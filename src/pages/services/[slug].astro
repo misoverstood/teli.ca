@@ -2,6 +2,7 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import CtaBand from '../../components/CtaBand.astro';
 import { services, howItWorks, type Service } from '../../data/services';
+import { serviceSchemas } from '../../data/schema';
 
 export function getStaticPaths() {
   return services.map((service) => ({
@@ -17,7 +18,7 @@ interface Props {
 const { service } = Astro.props;
 ---
 
-<BaseLayout title={service.title} description={service.description}>
+<BaseLayout title={service.title} description={service.description} jsonLd={serviceSchemas(service)}>
   <section class="container-site pt-12 md:pt-20">
     <h1 class="text-h1">{service.name}</h1>
     <p class="mt-6 max-w-prose text-lead text-muted">{service.lead}</p>
