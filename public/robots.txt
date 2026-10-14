@@ -1,0 +1,9 @@
+# teli.ca
+# All crawlers are welcome: search engines and AI assistants, including
+# search, answer and training crawlers. This is a deliberate choice, recorded
+# in PRODUCT.md. Change it there and here together.
+
+User-agent: *
+Allow: /
+
+Sitemap: https://teli.ca/sitemap-index.xml
