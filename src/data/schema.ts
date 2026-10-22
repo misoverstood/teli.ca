@@ -25,7 +25,7 @@ export function businessSchema() {
 }
 
 export function serviceSchemas(s: Service) {
-  const url = `${site.url}${serviceUrl(s)}/`;
+  const url = `${site.url}${serviceUrl(s)}`;
   return [
     {
       '@context': 'https://schema.org',

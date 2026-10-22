@@ -53,19 +53,19 @@ export default {
     // Refuse oversized requests before reading them.
     const declared = Number(request.headers.get("Content-Length") ?? "0");
     if (declared > MAX_BODY_BYTES) {
-      return back("/contact/error");
+      return back("/contact/error/");
     }
 
     let form;
     try {
       form = await request.formData();
     } catch {
-      return back("/contact/error");
+      return back("/contact/error/");
     }
 
     // Honeypot: real people never fill this in. Pretend success so bots learn nothing.
     if (cleanLine(form.get("website"), 200) !== "") {
-      return back("/contact/thanks");
+      return back("/contact/thanks/");
     }
 
     const name = cleanLine(form.get("name"), LIMITS.name);
@@ -73,13 +73,13 @@ export default {
     const message = (form.get("message") ?? "").toString().trim().slice(0, LIMITS.message);
 
     if (!name || !email || !message || !EMAIL_RE.test(email)) {
-      return back("/contact/error");
+      return back("/contact/error/");
     }
 
     const token = (form.get("cf-turnstile-response") ?? "").toString();
     const human = await verifyTurnstile(token, request.headers.get("CF-Connecting-IP"), env.TURNSTILE_SECRET, allowedHosts);
     if (!human) {
-      return back("/contact/error");
+      return back("/contact/error/");
     }
 
     try {
@@ -99,13 +99,13 @@ export default {
       });
       if (!res.ok) {
         console.error("Resend rejected the message", res.status);
-        return back("/contact/error");
+        return back("/contact/error/");
       }
     } catch {
       console.error("Could not reach Resend");
-      return back("/contact/error");
+      return back("/contact/error/");
     }
 
-    return back("/contact/thanks");
+    return back("/contact/thanks/");
   },
 };

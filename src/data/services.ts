@@ -360,4 +360,4 @@ export const services: Service[] = [
 
 export const businessServices = services.filter((s) => s.group === "business");
 export const personalServices = services.filter((s) => s.group === "personal");
-export const serviceUrl = (s: Service) => `/services/${s.slug}`;
+export const serviceUrl = (s: Service) => `/services/${s.slug}/`;

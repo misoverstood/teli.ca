@@ -3,7 +3,7 @@ import type { APIRoute } from 'astro';
 import { businessServices, personalServices, serviceUrl, type Service } from '../data/services';
 import { site } from '../data/site';
 
-const line = (s: Service) => `- [${s.name}](${site.url}${serviceUrl(s)}/): ${s.summary}`;
+const line = (s: Service) => `- [${s.name}](${site.url}${serviceUrl(s)}): ${s.summary}`;
 
 export const GET: APIRoute = () => {
   const body = [
