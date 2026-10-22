@@ -17,6 +17,22 @@ const ogAlt = "teli.ca: Tech, sorted. The IT person you don't have.";
 const fullTitle = `${title} | teli.ca`;
 const year = new Date().getFullYear();
 const cfBeacon = JSON.stringify({ token: site.cfAnalyticsToken });
+
+// Content Security Policy, production builds only (the dev server injects its own scripts).
+// Allows: our own files, Cloudflare Turnstile, Cloudflare Web Analytics, and form posts to the Worker.
+const formOrigin = new URL(site.contactEndpoint).origin;
+const csp = [
+  "default-src 'self'",
+  "script-src 'self' https://challenges.cloudflare.com https://static.cloudflareinsights.com",
+  "connect-src 'self' https://cloudflareinsights.com",
+  "frame-src https://challenges.cloudflare.com",
+  "img-src 'self' data:",
+  "font-src 'self'",
+  "style-src 'self'",
+  `form-action 'self' ${formOrigin}`,
+  "base-uri 'self'",
+  "object-src 'none'",
+].join('; ');
 ---
 
 <!doctype html>
@@ -24,6 +40,7 @@ const cfBeacon = JSON.stringify({ token: site.cfAnalyticsToken });
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    {import.meta.env.PROD && <meta http-equiv="Content-Security-Policy" content={csp} />}
     <title>{fullTitle}</title>
     <meta name="description" content={description} />
     {noindex && <meta name="robots" content="noindex" />}

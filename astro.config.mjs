@@ -7,6 +7,10 @@ import tailwindcss from '@tailwindcss/vite';
 // https://astro.build/config
 export default defineConfig({
   site: 'https://teli.ca',
+  build: {
+    // Always load CSS as files, never inline <style>, so the CSP can keep style-src 'self'.
+    inlineStylesheets: 'never',
+  },
   integrations: [
     sitemap({
       // Confirmation and error pages are noindex and stay out of the sitemap.
