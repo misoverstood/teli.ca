@@ -3,6 +3,7 @@
 // and sends the message through Resend. Never logs names, emails or message content.
 
 const LIMITS = { name: 100, email: 254, message: 5000 };
+const MAX_BODY_BYTES = 20000; // A real submission is a few KB.
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 // Single-line fields: collapse line breaks and tabs so they can't break headers.
@@ -10,7 +11,8 @@ function cleanLine(value, max) {
   return (value ?? "").toString().replace(/[\r\n\t]+/g, " ").trim().slice(0, max);
 }
 
-async function verifyTurnstile(token, ip, secret) {
+// Verifies the Turnstile token and that the check ran on one of our own hostnames.
+async function verifyTurnstile(token, ip, secret, allowedHosts) {
   if (!token || !secret) return false;
   const body = new FormData();
   body.append("secret", secret);
@@ -22,7 +24,7 @@ async function verifyTurnstile(token, ip, secret) {
       body,
     });
     const data = await res.json();
-    return data.success === true;
+    return data.success === true && allowedHosts.includes(data.hostname);
   } catch {
     return false;
   }
@@ -45,7 +47,14 @@ export default {
     if (!allowed.includes(origin)) {
       return new Response("Forbidden", { status: 403 });
     }
+    const allowedHosts = allowed.map((o) => new URL(o).hostname);
     const back = (path) => Response.redirect(`${origin}${path}`, 303);
+
+    // Refuse oversized requests before reading them.
+    const declared = Number(request.headers.get("Content-Length") ?? "0");
+    if (declared > MAX_BODY_BYTES) {
+      return back("/contact/error");
+    }
 
     let form;
     try {
@@ -68,7 +77,7 @@ export default {
     }
 
     const token = (form.get("cf-turnstile-response") ?? "").toString();
-    const human = await verifyTurnstile(token, request.headers.get("CF-Connecting-IP"), env.TURNSTILE_SECRET);
+    const human = await verifyTurnstile(token, request.headers.get("CF-Connecting-IP"), env.TURNSTILE_SECRET, allowedHosts);
     if (!human) {
       return back("/contact/error");
     }
