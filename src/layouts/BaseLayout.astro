@@ -1,6 +1,7 @@
 ---
 import '../styles/global.css';
 import { toJsonLd } from '../data/schema';
+import { site } from '../data/site';
 
 interface Props {
   title: string;
@@ -15,6 +16,7 @@ const ogImage = new URL('/og.png', Astro.site);
 const ogAlt = "teli.ca: Tech, sorted. The IT person you don't have.";
 const fullTitle = `${title} | teli.ca`;
 const year = new Date().getFullYear();
+const cfBeacon = JSON.stringify({ token: site.cfAnalyticsToken });
 ---
 
 <!doctype html>
@@ -97,5 +99,9 @@ const year = new Date().getFullYear();
         <p>&copy; {year} teli.ca</p>
       </div>
     </footer>
+
+    {import.meta.env.PROD && (
+      <script is:inline type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon={cfBeacon}></script>
+    )}
   </body>
 </html>

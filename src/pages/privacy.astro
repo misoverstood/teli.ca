@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 
-const updated = "October 12, 2026";
+const updated = "October 22, 2026";
 ---
 
 <BaseLayout
@@ -40,7 +40,10 @@ const updated = "October 12, 2026";
           To keep spam out, the contact page uses Cloudflare Turnstile, which looks at technical signals such as your IP address and browser to tell people from automated bots. Like most websites, the hosting service also keeps standard technical logs, such as IP addresses, for security.
         </p>
         <p class="mt-3">
-          This site doesn&rsquo;t set cookies, doesn&rsquo;t use advertising trackers, and doesn&rsquo;t currently use analytics.
+          To understand how the site is used, I use Cloudflare Web Analytics. It records things like which pages were viewed, the site that referred you, your country, and your browser and device type, and shows them to me only as totals. It doesn&rsquo;t use cookies and isn&rsquo;t used to follow you across other websites.
+        </p>
+        <p class="mt-3">
+          This site doesn&rsquo;t set cookies and doesn&rsquo;t use advertising trackers.
         </p>
       </div>
 
@@ -53,9 +56,9 @@ const updated = "October 12, 2026";
 
       <div>
         <h2 class="text-h3">Who else handles it</h2>
-        <p class="mt-3">A few services are involved in getting your message from this site to my inbox:</p>
+        <p class="mt-3">A few services are involved in running this site and getting your message to my inbox:</p>
         <ul class="mt-3 list-disc space-y-2 pl-6">
-          <li><strong>Cloudflare</strong> runs the spam check and the small program that receives the form. That program passes your message along and doesn&rsquo;t store it.</li>
+          <li><strong>Cloudflare</strong> runs the spam check, the visitor statistics, and the small program that receives the form. That program passes your message along and doesn&rsquo;t store it.</li>
           <li><strong>Resend</strong> delivers the message to my inbox by email. It keeps delivery logs, which can include the message, for a limited period.</li>
           <li><strong>Microsoft</strong> provides the mailbox where your message is received.</li>
           <li><strong>GitHub</strong> hosts this website.</li>
