@@ -1,5 +1,5 @@
 // Single source of truth for services. PRODUCT.md holds the reasoning behind this list.
-// The home page, the /services index and every service page read from here.
+// The home page, the /services index, every service page, llms.txt and structured data read from here.
 
 export type ServiceGroup = "business" | "personal";
 
@@ -36,36 +36,36 @@ export const howItWorks: Step[] = [
     body: "A short conversation to understand your setup and agree on what will be done.",
   },
   {
-    title: "I sort it",
-    body: "The work gets done, and you're kept in the loop on anything that affects you.",
+    title: "I get it done",
+    body: "Every change is agreed with you first, and you're kept in the loop on anything that affects you.",
   },
   {
     title: "You get it in writing",
-    body: "Plain-language notes on what changed and where everything lives, so you're never stuck.",
+    body: "Plain-language documentation of what changed and where everything lives.",
   },
 ];
 
 export const services: Service[] = [
   {
-    slug: "email-and-workspace",
-    name: "Email and workspace",
-    summary: "Microsoft 365 or Google Workspace, set up properly and kept tidy.",
+    slug: "email-and-collaboration",
+    name: "Email and collaboration",
+    summary: "Microsoft 365, Google Workspace or another provider, set up and secured for the way you work.",
     group: "business",
     searchTarget: "Microsoft 365 setup Toronto",
-    title: "Microsoft 365 and Google Workspace setup in Toronto",
-    description: "Set up, clean up or untangle Microsoft 365 or Google Workspace for your small business or nonprofit: accounts, licences, shared mailboxes and security.",
-    lead: "Whether you're starting fresh or inheriting a setup nobody understands, I'll get your email, calendars and files working the way they should, with the right people having the right access.",
+    title: "Microsoft 365, Google Workspace and email setup in Toronto",
+    description: "Set up, secure or move your business email and collaboration tools: Microsoft 365 (formerly Office 365), Google Workspace or another provider, for businesses and organizations across the GTA.",
+    lead: "Whether you're starting fresh, inheriting a setup nobody understands or moving to a new provider, I'll get your email, calendars and files working the way they should, with the right people having the right access.",
     included: [
-      "New Microsoft 365 or Google Workspace setup, start to finish",
-      "A licence review so you're not paying for accounts nobody uses",
+      "Setup of Microsoft 365 (formerly Office 365), Google Workspace or another provider",
+      "Moving from one email or collaboration platform to another",
+      "A licence review so you only pay for what you use",
       "Shared mailboxes, aliases and distribution lists",
       "Multi-factor authentication on every account",
-      "Clean-up of old users, forwarding rules and permissions",
     ],
     faqs: [
       {
         q: "Microsoft 365 or Google Workspace: which should I pick?",
-        a: "It depends on how your team works and what you already use. If you live in Word and Excel, Microsoft 365 usually fits better. If your team works mostly in a browser, Google Workspace is often simpler. I'll walk you through the trade-offs before you commit.",
+        a: "It depends on how your team works and what you already use. If you live in Word and Excel, Microsoft 365 usually fits better. If your team works mostly in a browser, Google Workspace is often simpler, and sometimes another provider suits you best. I'll walk you through the trade-offs before you commit.",
       },
       {
         q: "Can you fix a setup someone else did?",
@@ -80,11 +80,11 @@ export const services: Service[] = [
   {
     slug: "domains-and-dns",
     name: "Domains and DNS",
-    summary: "Your domain under your control, and email that actually lands.",
+    summary: "Domains under your control, and email that's authenticated and delivered reliably.",
     group: "business",
     searchTarget: "DMARC setup small business",
     title: "Domain and DNS management, SPF, DKIM and DMARC setup",
-    description: "Get control of your domain and DNS, and set up SPF, DKIM and DMARC so your email reaches inboxes instead of spam folders.",
+    description: "Get control of your domain and DNS, and set up SPF, DKIM and DMARC so your email is authenticated and reaches inboxes instead of spam folders.",
     lead: "Your domain is the foundation of your email and website. I'll make sure you own it, that its DNS records are correct, and that your email passes the checks inbox providers now expect.",
     included: [
       "Domain registration, renewals and transfers into your own name",
@@ -111,23 +111,23 @@ export const services: Service[] = [
   {
     slug: "security-and-devices",
     name: "Security and devices",
-    summary: "Sign-ins, laptops and phones locked down, and staff changes handled.",
+    summary: "Strong authentication, managed devices and controlled access for everyone on your team.",
     group: "business",
     searchTarget: "small business cybersecurity Toronto",
     title: "Small business cybersecurity and device management in Toronto",
-    description: "Practical security for small businesses and nonprofits in Toronto: multi-factor authentication, managed laptops and phones, password managers, and clean onboarding and offboarding.",
-    lead: "Most security problems in small organizations come down to weak sign-ins, unmanaged devices and accounts left open after someone leaves. I'll fix those first, in a way your team can live with.",
+    description: "Practical security for businesses and organizations across the GTA: strong authentication including passkeys, managed devices, password managers, and access granted and removed at the right time.",
+    lead: "Good security starts with the basics: strong authentication, managed devices, and access that's granted and removed at the right time. I put those in place in a way that protects your business without slowing your team down.",
     included: [
-      "Multi-factor authentication across email and key apps",
-      "Laptops and phones enrolled and managed, with remote wipe if one is lost",
+      "Strong authentication, including passkeys and multi-factor sign-in",
+      "Computers and mobile devices managed, with remote wipe if one is lost",
       "A password manager rolled out to the team",
-      "Onboarding and offboarding checklists so access starts and ends cleanly",
-      "Identity setup in Microsoft Entra or Google, including Azure where it applies",
+      "Access granted and removed at the right time when people join or leave",
+      "Identity setup in Microsoft Entra, Google or your identity provider",
     ],
     faqs: [
       {
         q: "We're only a few people. Do we really need this?",
-        a: "Small teams are often targeted because they're less likely to have protections in place. The basics here take little time to set up and block the most common attacks.",
+        a: "Small teams are often targeted because they're less likely to have protections in place. The basics take little time to set up and block the most common attacks.",
       },
       {
         q: "What happens when someone leaves?",
@@ -135,24 +135,24 @@ export const services: Service[] = [
       },
       {
         q: "Will this slow my team down?",
-        a: "A little at first, while everyone sets up multi-factor sign-in. After that, a password manager usually makes signing in faster, not slower.",
+        a: "A little at first, while everyone sets up stronger sign-in. After that, passkeys and a password manager usually make signing in faster, not slower.",
       },
     ],
   },
   {
     slug: "migrations",
     name: "Migrations",
-    summary: "Move email, files and websites to a new platform without losing anything.",
+    summary: "Move email, files and websites between platforms without losing anything.",
     group: "business",
     searchTarget: "email migration Toronto",
     title: "Email, file and platform migrations in Toronto",
-    description: "Move email, files, domains or websites between platforms, including Google Workspace to Microsoft 365 and back, without losing data.",
+    description: "Move email, files, domains or websites between platforms and providers without losing data, for businesses and organizations across the GTA.",
     lead: "Switching platforms is mostly about planning. I'll map what you have, move it in the right order and check everything arrived before the old system is switched off.",
     included: [
-      "Email migrations, including Google Workspace to Microsoft 365 and back",
+      "Email moves between providers, such as Google Workspace and Microsoft 365",
       "Files and shared drives moved with their permissions",
       "Tenant to tenant moves after a merger or rebrand",
-      "Domain and website moves between providers",
+      "Domain and website moves between hosts",
       "A cut-over plan with a clear rollback point",
     ],
     faqs: [
@@ -173,14 +173,14 @@ export const services: Service[] = [
   {
     slug: "websites-and-hosting",
     name: "Websites and hosting",
-    summary: "A simple site, reliable hosting and a domain you actually own.",
+    summary: "A fast, simple website with reliable hosting, on a domain you own.",
     group: "business",
     searchTarget: "website hosting help small business",
     title: "Website and hosting help for small businesses",
-    description: "Simple websites, hosting moves, SSL certificates and getting control of your domain back, for small businesses and nonprofits.",
-    lead: "Your website should load fast, stay secure and be under your control. I build simple sites and sort out the hosting, certificates and accounts behind them.",
+    description: "Simple, fast websites, hosting moves, SSL certificates and getting control of your domain back, for businesses and organizations across the GTA.",
+    lead: "Your website should load fast, stay secure and be under your control. I build simple sites and take care of the hosting, certificates and accounts behind them.",
     included: [
-      "Simple, fast websites for small businesses and nonprofits",
+      "Simple, fast websites for businesses and organizations",
       "Moving your site to reliable, low-maintenance hosting",
       "SSL certificates so your site shows as secure",
       "Recovering access to hosting and domain accounts",
@@ -202,20 +202,51 @@ export const services: Service[] = [
     ],
   },
   {
+    slug: "seo-setup",
+    name: "SEO setup",
+    summary: "Get found on Google and Bing, with the essentials set up correctly from day one.",
+    group: "business",
+    searchTarget: "SEO setup small business Toronto",
+    title: "SEO setup for small businesses in Toronto",
+    description: "Get your website found on Google and Bing: Google Business Profile, Search Console, sitemaps, structured data and on-page basics, set up correctly for businesses and organizations across the GTA.",
+    lead: "A good website only helps if people can find it. I'll set up the foundations search engines look for, so your business shows up when people search for what you do.",
+    included: [
+      "Google Business Profile and Bing Places set up or cleaned up",
+      "Google Search Console and Bing Webmaster Tools connected and verified",
+      "Sitemaps, page titles and descriptions done properly",
+      "Structured data so search engines understand your business",
+      "A check of speed, mobile friendliness and broken links",
+    ],
+    faqs: [
+      {
+        q: "How long until I show up in search results?",
+        a: "It varies. Search engines usually pick up changes within days to weeks, but rankings build over time. Getting the foundations right is what makes everything after it work.",
+      },
+      {
+        q: "Do you guarantee first-page rankings?",
+        a: "No, and be wary of anyone who does. Nobody controls Google's results. What I can do is make sure nothing technical is holding your site back.",
+      },
+      {
+        q: "Do you work on sites you didn't build?",
+        a: "Yes. Most of this work happens on existing sites, whatever platform they're built on.",
+      },
+    ],
+  },
+  {
     slug: "automation-and-ai",
     name: "Automation and AI",
-    summary: "Connect your apps, cut repetitive work and put AI tools to use safely.",
+    summary: "Hand repetitive work to automation and AI, and get time back for your business.",
     group: "business",
     searchTarget: "small business automation",
     title: "Small business automation and AI tools",
-    description: "Connect your apps, automate repetitive work and set up AI tools like Microsoft Copilot safely for your small business or nonprofit.",
-    lead: "If someone on your team copies the same information between apps every week, that's work a computer can do. I'll find those tasks, automate them and set up AI tools with sensible guardrails.",
+    description: "Automate repetitive work by connecting your apps with tools like Zapier, Make or Power Automate, and set up AI tools like Microsoft Copilot safely for your team.",
+    lead: "Copying data between apps, chasing approvals and re-entering the same information is slow, tedious work. Automation and AI can take it off your plate, freeing your time for the work that grows your business.",
     included: [
       "Finding the repetitive tasks worth automating",
-      "Connecting apps with tools like Zapier and Power Automate",
-      "Setting up Microsoft Copilot, ChatGPT or Gemini for your team",
+      "Connecting your apps with tools like Zapier, Make or Power Automate",
+      "Setting up Microsoft Copilot, ChatGPT or other AI tools for your team",
       "Clear guidelines on what data can and can't go into AI tools",
-      "Documentation so your automations never become a mystery",
+      "Documentation so every automation is easy to understand and maintain",
     ],
     faqs: [
       {
@@ -223,8 +254,8 @@ export const services: Service[] = [
         a: "It can be, with the right plan and settings. Business versions of these tools generally offer stronger data protections than free personal accounts. I'll help you choose one and set clear rules for your team.",
       },
       {
-        q: "What kind of tasks can be automated?",
-        a: "Things like sending form submissions to a spreadsheet, creating invoices from new orders, or alerting someone when a certain email arrives. If it follows the same steps every time, it's a good candidate.",
+        q: "What kind of work can be automated?",
+        a: "Things like turning new orders into invoices, routing enquiries to the right person, or keeping customer details in sync between your website, mailing list and accounting. If it follows the same steps every time, it's a good candidate.",
       },
       {
         q: "What happens if an automation breaks?",
@@ -233,19 +264,18 @@ export const services: Service[] = [
     ],
   },
   {
-    slug: "office-setup",
-    name: "Office setup",
-    summary: "Network, Wi-Fi, backups and printers for a small or home office.",
+    slug: "workplace-it",
+    name: "Workplace IT",
+    summary: "Secure networks, Wi-Fi, backups and devices for your workplace, wherever that is.",
     group: "business",
     searchTarget: "small office IT setup Toronto",
-    title: "Small office and home office IT setup in Toronto",
-    description: "Network, Wi-Fi, backups, printers and hardware for small offices and home offices in Toronto, set up properly and documented.",
-    lead: "Moving into a new space, adding staff or just tired of things not working? I'll set up the network, Wi-Fi, backups and equipment so your office runs without daily workarounds.",
+    title: "Office and home office IT setup in Toronto and the GTA",
+    description: "Secure networks, Wi-Fi, cloud backups and devices for offices and home offices across the GTA, set up properly and documented.",
+    lead: "Moving into a new space, adding staff or setting up a home office? I'll set up your network correctly and securely, along with Wi-Fi, backups and devices, so your workplace runs without daily workarounds.",
     included: [
-      "Business-grade Wi-Fi and network setup",
-      "Automatic backups, tested so they actually restore",
-      "Printers and shared devices that work for everyone",
-      "Help choosing and buying the right laptops and equipment",
+      "A secure, business-grade network and Wi-Fi",
+      "Automatic cloud backups with OneDrive, Dropbox or similar, tested so they restore when you need them",
+      "Printers, screens and shared devices that work for everyone",
       "A simple diagram and notes showing how it all fits together",
     ],
     faqs: [
@@ -259,21 +289,22 @@ export const services: Service[] = [
       },
       {
         q: "Is a home office treated differently?",
-        a: "The basics are the same: reliable Wi-Fi, backups and secure devices. A home office just needs it sized for one or two people, and kept separate from the household where it matters.",
+        a: "The basics are the same: a secure network, backups and protected devices. A home office just needs it sized for one or two people, and kept separate from the household where it matters.",
       },
     ],
   },
   {
     slug: "home-network",
     name: "Home network",
-    summary: "Wi-Fi that reaches every room, on a router that is locked down.",
+    summary: "Fast, secure Wi-Fi and wired connections throughout your home.",
     group: "personal",
     searchTarget: "home Wi-Fi setup Toronto",
     title: "Home Wi-Fi and network setup in Toronto",
-    description: "Wi-Fi that reaches every room, a secure router and parental controls that work. Home network setup and troubleshooting in Toronto.",
-    lead: "Dead zones, slow evenings and a router nobody has logged into since it was installed. I'll set up your home network so it covers every room and stays secure.",
+    description: "Fast, secure Wi-Fi and wired connections throughout your home, with parental controls and a properly secured router. Home network setup across the GTA.",
+    lead: "Dead zones, dropped connections and slow evenings are fixable. I'll set up your home network so it reaches every corner of your home, wired or wireless, and stays secure.",
     included: [
       "Wi-Fi coverage for every room, including mesh systems where needed",
+      "Wired connections for desks, TVs and consoles where Wi-Fi isn't enough",
       "Router setup with strong passwords and current firmware",
       "A separate guest network, and one for smart home devices",
       "Parental controls and screen-time settings",
@@ -282,7 +313,7 @@ export const services: Service[] = [
     faqs: [
       {
         q: "Do I need a mesh system?",
-        a: "Not always. Sometimes moving or replacing one router is enough. I'll check your space first and only recommend extra equipment if it will actually help.",
+        a: "Not always. Sometimes moving or replacing one router, or running a cable, is enough. I'll check your space first and only recommend extra equipment if it will actually help.",
       },
       {
         q: "Why separate smart home devices?",
@@ -297,15 +328,15 @@ export const services: Service[] = [
   {
     slug: "personal-security",
     name: "Personal security",
-    summary: "Stronger passwords and sign-ins, and help after a hack or scam.",
+    summary: "Stronger authentication, from passkeys to two-factor, and help after a hack or scam.",
     group: "personal",
     searchTarget: "personal cybersecurity help",
     title: "Personal cybersecurity help in Toronto",
-    description: "Stronger passwords, two-factor sign-in, secured devices and help after a hack or scam. Personal cybersecurity for individuals and families in Toronto.",
-    lead: "A password manager and two-factor sign-in prevent a large share of account takeovers. I'll set them up with you, secure your devices, and help you recover if something has already gone wrong.",
+    description: "Passkeys, two-factor sign-in, password managers, secured devices and help after a hack or scam, for individuals and families across the GTA.",
+    lead: "Strong authentication, like passkeys and two-factor sign-in, prevents a large share of account takeovers. I'll set it up with you, secure your devices, and help you recover if something has already gone wrong.",
     included: [
+      "Passkeys and two-factor sign-in on your important accounts",
       "A password manager set up and filled with your accounts",
-      "Two-factor sign-in on email, banking and social accounts",
       "Phones, tablets and computers updated and locked down",
       "Recovering hacked email or social media accounts",
       "A plain-language checklist for spotting scams",
@@ -326,14 +357,45 @@ export const services: Service[] = [
     ],
   },
   {
-    slug: "online-cleanup",
-    name: "Online clean-up",
-    summary: "Your personal information off data broker sites and forgotten accounts.",
+    slug: "device-care",
+    name: "Device care",
+    summary: "Virus removal, tune-ups, resets and new device setup for computers, tablets and phones.",
+    group: "personal",
+    searchTarget: "computer virus removal Toronto",
+    title: "Computer virus removal, tune-ups and device setup in Toronto",
+    description: "Virus and malware removal, slow computer tune-ups, factory resets and new device setup for computers, tablets and phones across the GTA.",
+    lead: "A slow computer, strange pop-ups or a new device to set up? I'll get your computers, tablets and phones running cleanly and securely, with your files and settings where they should be.",
+    included: [
+      "Virus and malware removal",
+      "Tune-ups for slow computers",
+      "Factory resets before you sell, donate or recycle a device",
+      "New device setup, with your files, photos and settings moved across",
+      "Updates, backups and security settings checked",
+    ],
+    faqs: [
+      {
+        q: "Will I lose my files?",
+        a: "Not if it can be avoided. Before any reset or major fix, your important files are backed up first, and you'll know the plan before anything is erased.",
+      },
+      {
+        q: "Is it worth fixing an old computer?",
+        a: "Sometimes. I'll tell you honestly whether a tune-up will help or whether replacing it makes more sense.",
+      },
+      {
+        q: "Why reset a device before selling it?",
+        a: "Deleting files isn't enough. A proper reset removes your accounts and data so the next owner can't get to them.",
+      },
+    ],
+  },
+  {
+    slug: "online-privacy",
+    name: "Online privacy",
+    summary: "Find out what's out there about you, and get it removed.",
     group: "personal",
     searchTarget: "remove personal information online Canada",
     title: "Remove your personal information online in Canada",
-    description: "Get your personal information off data broker sites, close forgotten accounts and tighten privacy settings. Online clean-up for individuals in Canada.",
-    lead: "Your address, phone number and relatives' names may be listed on data broker sites you've never heard of. I'll find what's out there, request removals and close the accounts you no longer use.",
+    description: "Find out what's publicly listed about you, get your personal information off data broker sites, close forgotten accounts and tighten privacy settings.",
+    lead: "Your home address, phone number and email may be listed on data broker and people-search sites you've never heard of. I'll find what's out there about you, request removals and close the accounts you no longer use.",
     included: [
       "A search for what's publicly listed about you",
       "Removal requests to data broker and people-search sites",
@@ -352,7 +414,7 @@ export const services: Service[] = [
       },
       {
         q: "Is my information safe with you?",
-        a: "I only collect what's needed to find and remove your listings, and I delete my working notes when we're done unless you ask me to keep them.",
+        a: "I only ask for what's needed to find your listings. Once the work is finished, I can delete my notes or keep them for follow-up removals, whichever you prefer.",
       },
     ],
   },

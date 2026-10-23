@@ -3,7 +3,7 @@ import { site } from './site';
 import { services, serviceUrl, type Service } from './services';
 
 const businessId = `${site.url}/#business`;
-const toronto = { '@type': 'City', name: 'Toronto' };
+const serviceArea = { '@type': 'AdministrativeArea', name: 'Greater Toronto Area' };
 
 export const businessRef = {
   '@type': 'ProfessionalService',
@@ -17,9 +17,9 @@ export function businessSchema() {
     '@context': 'https://schema.org',
     ...businessRef,
     description:
-      'Independent IT consulting and hands-on technical help in Toronto for small businesses, nonprofits, home offices and households.',
+      'IT consulting and hands-on support for businesses, organizations and households across the Greater Toronto Area.',
     slogan: 'Tech, sorted.',
-    areaServed: toronto,
+    areaServed: serviceArea,
     knowsAbout: services.map((s) => s.name),
   };
 }
@@ -35,7 +35,7 @@ export function serviceSchemas(s: Service) {
       description: s.description,
       url,
       provider: businessRef,
-      areaServed: toronto,
+      areaServed: serviceArea,
     },
     {
       '@context': 'https://schema.org',
