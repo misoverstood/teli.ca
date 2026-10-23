@@ -95,6 +95,10 @@ export const services: Service[] = [
     ],
     faqs: [
       {
+        q: "What is DNS?",
+        a: "DNS, the Domain Name System, is the internet's address book. It tells the world where your website lives and which servers handle your email, so when it's wrong, your website or email can stop working.",
+      },
+      {
         q: "What are SPF, DKIM and DMARC?",
         a: "They're DNS records that prove email from your domain really comes from you. Without them, your messages are more likely to land in spam, and it's easier for someone to send fake email that looks like yours.",
       },

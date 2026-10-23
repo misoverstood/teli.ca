@@ -62,6 +62,8 @@ For homes and families
 
 Parked for later: an "Ongoing IT support" page for a monthly arrangement.
 
+Parked for later: adding color or graphics (a reviewer suggestion, declined for now; the text-based design stays).
+
 ## Testimonials
 
 - Live in src/data/testimonials.ts. The home page section stays hidden while the list is empty.

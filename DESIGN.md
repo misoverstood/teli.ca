@@ -47,6 +47,7 @@ General
 | statement | clamp(1.75rem, 3vw + 1rem, 3.5rem) | 700 | 1.1 | -0.02em |
 | h2 | clamp(2rem, 3vw + 1rem, 3.25rem) | 700 | 1.05 | -0.02em |
 | h3 | 1.5rem | 700 | 1.2 | -0.01em |
+| wordmark | clamp(1.875rem, 1.5rem + 1vw, 2.25rem) | 800 | 1.0 | -0.02em |
 | lead | 1.25rem | 400 | 1.5 | 0 |
 | body | 1.0625rem | 400 | 1.6 | 0 |
 | small | 0.875rem | 400 | 1.5 | 0 |
@@ -74,7 +75,7 @@ General
 ## Components
 
 Wordmark and Brand
-- Header and footer wordmark: "teli" in ink (paper on black bands) followed by ".ca" in accent, weight 800. Links home.
+- Header and footer wordmark: "teli" in ink (paper on black bands) followed by ".ca" in accent, weight 800. Wordmark size in the header (30px on phones up to 36px), lead size in the footer. Links home.
 - Brand component (src/components/Brand.astro): the same name inside body text and headings, semi-bold, ".ca" in accent.
 
 Header
