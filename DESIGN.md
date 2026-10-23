@@ -22,14 +22,13 @@ Black, white and gray with one green accent used sparingly. Very large display t
 | accent | #16a34a | Bright green accent. See the accent rules below (3.3:1 on paper, 3.0:1 on mist, 6.0:1 on ink) |
 
 Accent rules
-- Allowed on paper: the ".ca" in the wordmark, keyboard focus outlines, link hover underlines, check marks in "what's included" lists, text selection background (with ink text).
-- Allowed on black bands: the same, plus the ".ca" in the footer wordmark and small marks. It reads well on ink.
-- Never: body or small text in accent on paper or mist (below 4.5:1), buttons, headlines, backgrounds, large areas, decoration.
+- Allowed: the ".ca" in the wordmark and in the Brand component (logotypes are exempt from text contrast minimums), keyboard focus outlines, link hover underlines, check marks in "What I can help with" lists, text selection background (with ink text), arrows on hover.
+- Never: body or small text in accent, buttons, headlines, backgrounds, large areas, decoration.
 - On mist panels, focus outlines use ink instead of accent.
 - Green means "done, working, sorted". Use it only where that meaning fits.
 
 General
-- hero-gray is for large text on paper only. It drops below 4.5:1 on mist.
+- hero-gray is for large text on paper only.
 - No gradients, glows, halos, tints or transparency effects.
 - Light theme only. Black bands provide the contrast.
 
@@ -74,9 +73,9 @@ General
 
 ## Components
 
-Wordmark
-- "teli" in ink (paper on black bands) followed by ".ca" in accent, weight 800. Links home.
-- h3 size in the header, lead size in the footer.
+Wordmark and Brand
+- Header and footer wordmark: "teli" in ink (paper on black bands) followed by ".ca" in accent, weight 800. Links home.
+- Brand component (src/components/Brand.astro): the same name inside body text and headings, semi-bold, ".ca" in accent.
 
 Header
 - Wordmark left. Right side from 768px up: Services, About, and a black "Get in touch" button.
@@ -91,27 +90,34 @@ Buttons
 - Primary: ink background, paper text. Secondary: paper background, ink text, 1px ink border.
 - On black bands the two invert.
 - Minimum height 44px, weight 600, pill radius.
-- Every contact button goes to /contact with no parameters. There is one form for everyone.
+- Every contact button goes to /contact/ with no parameters. There is one form for everyone.
 
 Links
+- Internal links always end in a trailing slash.
 - Underlined in body text, underline offset 0.2em, 1px. On hover: 2px and accent colored.
 - Color alone never marks a link.
 
 Focus
 - :focus-visible gets a 2px solid outline with 2px offset: accent on paper and on black bands, ink inside mist panels (on-mist class).
 
-Service rows
-- Replaces card grids. Each row: service name on the left, one-line description on the right, a right arrow after the name, 1px line between rows. The whole row is the link.
-- Two columns from 768px up, stacked below. Data comes from src/data/services.ts.
+Rows (service rows and the home page area rows)
+- Replace card grids. Each row: name on the left, one-line description on the right, a right arrow after the name, 1px line between rows. The whole row is the link.
+- Two columns from 768px up, stacked below. Service data comes from src/data/services.ts.
 
-Included lists
-- Service pages list what's included with a small accent check mark beside each item.
+Help lists
+- Service pages list "What I can help with" with a small accent check mark beside each item.
+
+How it works
+- The four steps (src/components/HowItWorks.astro) appear on the home page and the contact page only, on mist. Service pages and About don't repeat them.
 
 Statement band
-- Ink background, one plain positioning paragraph in the statement size, max about 24ch per line.
+- Ink background, one plain positioning line in the statement size, max about 24ch per line.
 
 CTA band
 - Ink background, one h2, one primary button (inverted). The single closing ask on a page. Never stack it directly after another black block.
+
+Testimonials
+- Home page only, between How it works and the CTA band. Hidden while the list is empty.
 
 Footer
 - Minimal: wordmark, nav links, Privacy, copyright line. small text.
@@ -127,14 +133,20 @@ Images and icons
 
 ## Page rhythm
 
-Home: hero (paper), business service rows (paper), statement (ink), personal and home service rows (mist), CTA (ink), footer.
+Home: hero (paper), What I do area rows (paper), statement (ink), How it works (mist), testimonials (paper, when present), CTA (ink), footer.
 
-Service pages: h1 and lead (paper), what's included, how it works, FAQ (mist), CTA (ink), footer.
+Services: h1, lead and "who I work with" (paper), business rows (paper), home rows (mist), CTA (ink), footer.
+
+Service pages: h1 and lead (paper), What I can help with plus one line pointing to contact (paper), FAQ (mist), CTA (ink), footer.
+
+About: h1 and lead (paper), background and tools (paper), what you can expect (mist), how I work (paper), CTA (ink), footer.
+
+Contact: h1 and lead (paper), form and side notes (paper), How it works (mist), footer.
 
 ## Motion
 
 - Hover and focus transitions only: 150ms ease-out on color, background and opacity.
-- No entrance animations. All content is visible without JavaScript.
+- No entrance animations. All content is visible without JavaScript, except the Turnstile check on the contact form.
 - Respect prefers-reduced-motion.
 
 ## Responsive
